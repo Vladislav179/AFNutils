@@ -1,0 +1,6 @@
+framework module AFNutils {
+  umbrella header "AFNutils-umbrella.h"
+
+  export *
+  module * { export * }
+}

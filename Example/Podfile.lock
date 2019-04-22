@@ -1,0 +1,16 @@
+PODS:
+  - AFNutils (0.1.0)
+
+DEPENDENCIES:
+  - AFNutils (from `../`)
+
+EXTERNAL SOURCES:
+  AFNutils:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNutils: c884fc8b7c480793c7c70f4cae47ed080a123ef7
+
+PODFILE CHECKSUM: facee925ca852570bac1bd9efe0d5051e55507f1
+
+COCOAPODS: 1.7.0.beta.3
