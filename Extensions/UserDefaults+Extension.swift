@@ -10,57 +10,55 @@ import Foundation
 public extension UserDefaults {
 
     // MARK: - subscripts
-    public subscript(key: DefaultsKey<Bool>) -> Bool {
+    subscript(key: DefaultsKey<Bool>) -> Bool {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<Int>) -> Int {
+    subscript(key: DefaultsKey<Int>) -> Int {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<Float>) -> Float {
+    subscript(key: DefaultsKey<Float>) -> Float {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<Double>) -> Double {
+    subscript(key: DefaultsKey<Double>) -> Double {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript<T>(key: DefaultsKey<T>) -> T? {
+    subscript<T>(key: DefaultsKey<T>) -> T? {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
     // MARK: Codeable workarounds
-
-    public subscript(key: DefaultsKey<String>) -> String? {
+    subscript(key: DefaultsKey<String>) -> String? {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<Data>) -> Data? {
+    subscript(key: DefaultsKey<Data>) -> Data? {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<Date>) -> Date? {
+    subscript(key: DefaultsKey<Date>) -> Date? {
         get { return value(key) }
         set { self[key.stringValue] = newValue }
     }
 
 
     // MARK: URL workarounds
-
-    public subscript(key: DefaultsKey<URL>) -> URL? {
+    subscript(key: DefaultsKey<URL>) -> URL? {
         get { return url(forKey: key.stringValue) }
         set { self[key.stringValue] = newValue }
     }
 
-    public subscript(key: DefaultsKey<[URL]>) -> [URL]? {
+    subscript(key: DefaultsKey<[URL]>) -> [URL]? {
         get {
             guard let urls = array(forKey: key.stringValue) as? [String] else { return nil }
             return urls.map { URL(string: $0) ?? NSURL() as URL }
@@ -70,7 +68,7 @@ public extension UserDefaults {
         }
     }
 
-    public subscript(key: DefaultsKey<[String : URL]>) -> [String : URL]? {
+    subscript(key: DefaultsKey<[String : URL]>) -> [String : URL]? {
         get {
             guard let urls = dictionary(forKey: key.stringValue) as? [String : String] else { return nil }
             var urlDict = [String:URL]()
@@ -84,7 +82,7 @@ public extension UserDefaults {
         }
     }
 
-    public subscript<T: Codable>(key: DefaultsKey<T>) -> T? {
+    subscript<T: Codable>(key: DefaultsKey<T>) -> T? {
         get {
             guard let data = data(forKey: key.stringValue) else { return nil }
             return try? JSONDecoder().decode(T.self, from: data)
@@ -96,7 +94,7 @@ public extension UserDefaults {
     }
 
     // MARK: - String subscript
-    public subscript(key: String) -> Any? {
+    subscript(key: String) -> Any? {
         set(value) {
             guard let value = value else {
                 removeObject(forKey: key)
@@ -169,24 +167,23 @@ public extension UserDefaults {
     }
 
     // MARK: - Getting values associated with the specified String key
-
-    public func value<T>(forKey key: String) -> T? {
+    func value<T>(forKey key: String) -> T? {
         return object(forKey: key) as? T
     }
 
     // MARK : Clearing UserDefaults
     /// Deletes the stored value associated with the specified String key
-    public func clear(_ key: String) {
+    func clear(_ key: String) {
         removeObject(forKey: key)
     }
 
     /// Deletes the stored value associated with the specified DefaultsKey
-    public func clear<T>(_ key: DefaultsKey<T>) {
+    func clear<T>(_ key: DefaultsKey<T>) {
         removeObject(forKey: key.stringValue)
     }
 
     /// Deletes every stored value in UserDefaults
-    public func clearAll() {
+    func clearAll() {
         if let appDomain = Bundle.main.bundleIdentifier {
             removePersistentDomain(forName: appDomain)
         }

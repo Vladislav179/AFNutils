@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 
 extension UIView {
     @IBInspectable var cornerRadius : CGFloat
@@ -177,30 +178,6 @@ extension UIView {
     }
 }
 
-
-extension UIView {
-    class func createOverlay(frame: CGRect, xOffset: CGFloat, yOffset: CGFloat, radius: CGFloat) -> UIView {
-
-        let overlayView = UIView(frame: frame)
-        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.54)
-
-        let path = CGMutablePath()
-        path.addArc(center: CGPoint(x: xOffset, y: yOffset), radius: radius, startAngle: 0.0, endAngle: 2.0 * .pi, clockwise: false)
-        path.addRect(CGRect(origin: .zero, size: overlayView.frame.size))
-
-        let maskLayer = CAShapeLayer()
-        maskLayer.backgroundColor = UIColor.black.cgColor
-        maskLayer.path = path
-        maskLayer.fillRule = .evenOdd
-
-        overlayView.layer.mask = maskLayer
-        overlayView.clipsToBounds = true
-
-        return overlayView
-    }
-}
-
-
 extension UIView {
     func subviewsRecursive() -> [UIView] {
         return subviews + subviews.flatMap { $0.subviewsRecursive() }
@@ -235,38 +212,55 @@ extension UIView {
     }
 }
 
-//
-//extension UIView {
-//
-//    var isBusy: Bool {
-//        get {
-//            var found = false
-//            self.subviews.forEach { (view) in
-//                if view is JGProgressHUD {
-//                    found = true
-//                }
-//            }
-//            return found
-//        }
-//    }
-//
-//    func isBusy(enable: Bool, after: Double = 0.0, isUserInteractionEnabled: Bool = false) {
-//        if enable {
-//            cleanView()
-//            let loadingView = JGProgressHUD()
-//            loadingView.show(in: self)
-//            self.isUserInteractionEnabled = true
-//        } else {
-//            self.cleanView()
-//        }
-//    }
-//
-//    private func cleanView() {
-//        self.subviews.forEach { (view) in
-//            if let v = view as? JGProgressHUD {
-//                v.dismiss()
-//                //                view.removeFromSuperview()
-//            }
-//        }
-//    }
-//}
+extension UIView{
+
+    private struct hudStruct {
+        static var hud = MBProgressHUD()
+        static var hudProgress: Float = 0
+    }
+
+    var hud: MBProgressHUD {
+        get{
+            return hudStruct.hud
+        }
+        set {
+            hudStruct.hud = newValue
+        }
+    }
+
+    var hudProgress: Float {
+        get {
+            return hudStruct.hudProgress
+        }
+        set {
+            hudStruct.hudProgress = newValue
+            hud.progress = newValue
+        }
+    }
+
+    func showHud() {
+        if !hud.isDescendant(of: self) {
+            hud = MBProgressHUD.showAdded(to: self, animated: true)
+            hud.mode = .indeterminate
+            hud.label.text = nil
+        }
+    }
+
+    func showHud(withProgess: Float, hudText:String? = nil) {
+        if !hud.isDescendant(of: self) {
+            hud = MBProgressHUD.showAdded(to: self, animated: true)
+            if let _hudText = hudText {
+                hud.label.text = _hudText
+            }
+            hud.mode = .annularDeterminate
+        }
+    }
+    func hideHud() {
+        DispatchQueue.main.async {
+            if self.hud.isDescendant(of: self) {
+                MBProgressHUD.hide(for: self, animated: true)
+                self.hudProgress = 0
+            }
+        }
+    }
+}

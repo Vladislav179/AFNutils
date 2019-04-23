@@ -1,7 +1,7 @@
 {
   "name": "AFNutils",
   "version": "0.1.0",
-  "summary": "A short description of AFNutils.",
+  "summary": "Init AFNutils.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Vladislav179/AFNutils",
   "license": {
@@ -18,5 +18,11 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "AFNutils/Classes/**/*"
+  "swift_versions": "4.0",
+  "source_files": "AFNutils/Classes/**/*",
+  "dependencies": {
+    "MBProgressHUD": [
+
+    ]
+  }
 }
