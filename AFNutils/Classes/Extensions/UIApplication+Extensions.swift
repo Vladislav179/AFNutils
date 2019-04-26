@@ -8,26 +8,6 @@
 import Foundation
 
 extension UIApplication {
-    func openLink(_ url: URL) {
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
-
-    func openLink(_ urlSting: String) {
-        guard let url = URL(string: urlSting) else { return }
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url)
-        }
-    }
-}
-
-
-extension UIApplication {
 
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
@@ -67,7 +47,3 @@ extension UIApplication {
     }
 }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
-}
