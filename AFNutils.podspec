@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
   #   'AFNutils' => ['AFNutils/Assets/*.png']
   # }
 
-  s.public_header_files = 'Pod/Classes/**/*.h'
+#  s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
 #   s.dependency 'MBProgressHUD'
 end
