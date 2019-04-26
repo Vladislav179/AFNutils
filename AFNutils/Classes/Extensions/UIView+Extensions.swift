@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MBProgressHUD
 
 extension UIView {
     @IBInspectable var cornerRadius : CGFloat
@@ -209,58 +208,5 @@ extension UIView {
         }
         getSubview(view: self)
         return all
-    }
-}
-
-extension UIView{
-
-    private struct hudStruct {
-        static var hud = MBProgressHUD()
-        static var hudProgress: Float = 0
-    }
-
-    var hud: MBProgressHUD {
-        get{
-            return hudStruct.hud
-        }
-        set {
-            hudStruct.hud = newValue
-        }
-    }
-
-    var hudProgress: Float {
-        get {
-            return hudStruct.hudProgress
-        }
-        set {
-            hudStruct.hudProgress = newValue
-            hud.progress = newValue
-        }
-    }
-
-    func showHud() {
-        if !hud.isDescendant(of: self) {
-            hud = MBProgressHUD.showAdded(to: self, animated: true)
-            hud.mode = .indeterminate
-            hud.label.text = nil
-        }
-    }
-
-    func showHud(withProgess: Float, hudText:String? = nil) {
-        if !hud.isDescendant(of: self) {
-            hud = MBProgressHUD.showAdded(to: self, animated: true)
-            if let _hudText = hudText {
-                hud.label.text = _hudText
-            }
-            hud.mode = .annularDeterminate
-        }
-    }
-    func hideHud() {
-        DispatchQueue.main.async {
-            if self.hud.isDescendant(of: self) {
-                MBProgressHUD.hide(for: self, animated: true)
-                self.hudProgress = 0
-            }
-        }
     }
 }

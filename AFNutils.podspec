@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AFNutils'
-  s.version          = '0.1.1'
-  s.summary          = 'Add MBProgressHUD dependency'
+  s.version          = '0.1.2'
+  s.summary          = 'Remove MBProgressHUD dependency'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
   #   'AFNutils' => ['AFNutils/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'MBProgressHUD'
+  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.frameworks = 'UIKit'
+#   s.dependency 'MBProgressHUD'
 end
