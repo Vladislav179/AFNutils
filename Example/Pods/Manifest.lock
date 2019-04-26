@@ -1,22 +1,15 @@
 PODS:
-  - AFNutils (0.1.0):
-    - MBProgressHUD
-  - MBProgressHUD (1.1.0)
+  - AFNutils (0.1.2)
 
 DEPENDENCIES:
   - AFNutils (from `../`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - MBProgressHUD
 
 EXTERNAL SOURCES:
   AFNutils:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNutils: 3417e105802c7596acb1af694a235bdcdc020cbd
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  AFNutils: 1b706d7190c85e3d4c0abb216b15feaf32183c8b
 
 PODFILE CHECKSUM: facee925ca852570bac1bd9efe0d5051e55507f1
 

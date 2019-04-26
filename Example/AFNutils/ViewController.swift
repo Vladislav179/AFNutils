@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import AFNutils
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib
+
+//        AFNutilsVersionNumber
+
+//        AFNutilsVersionNumber
     }
 
     override func didReceiveMemoryWarning() {

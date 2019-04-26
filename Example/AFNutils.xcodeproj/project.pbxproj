@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		AE13F42F227326560068C92D /* AFNutils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE13F42E227326560068C92D /* AFNutils.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		704D08CF3ACCF3B57C6F33AE /* AFNutils.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AFNutils.podspec; path = ../AFNutils.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AE13F42E227326560068C92D /* AFNutils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNutils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47E357BC1CDBE591EA04F37 /* Pods-AFNutils_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFNutils_Example.debug.xcconfig"; path = "Target Support Files/Pods-AFNutils_Example/Pods-AFNutils_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CB50494D14B02976BF9BCD23 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DCCA1F335C6D0E3744DE4E33 /* Pods_AFNutils_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFNutils_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE13F42F227326560068C92D /* AFNutils.framework in Frameworks */,
 				3628026DA57A6C98A11D8DCC /* Pods_AFNutils_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +145,7 @@
 		89FECC005A2CECF30AAE8A61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE13F42E227326560068C92D /* AFNutils.framework */,
 				FD5991F14C51CD85F96CB226 /* Pods_AFNutils_Example.framework */,
 				DCCA1F335C6D0E3744DE4E33 /* Pods_AFNutils_Tests.framework */,
 			);
@@ -271,12 +275,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AFNutils_Example/Pods-AFNutils_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNutils/AFNutils.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNutils.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
